@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class ex1
 {
     static void Main(string[] args)
     {
@@ -15,6 +15,7 @@ class Program
         {
             Console.WriteLine($"{year} is not a leap year.");
         }
+        Console.ReadLine();
     }
 
     static bool IsLeapYear(int year)
