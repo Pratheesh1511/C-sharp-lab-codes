@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class ex6
 {
     static void Main(string[] args)
     {
@@ -21,7 +21,9 @@ class Program
         SwapTwoNumber(num1, num2, out int swap_a, out int swap_b);
 
         Console.WriteLine($"The swapped number {num1} and {num2} is: {swap_a} and {swap_b}");
+        Console.ReadLine();
     }
+
 
     static void SwapTwoNumber(int a, int b, out int swap_a, out int swap_b)
     {

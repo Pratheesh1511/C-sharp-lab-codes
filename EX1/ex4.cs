@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class ex4
 {
     static void Main(string[] args)
     {
@@ -11,6 +11,7 @@ class Program
         Console.WriteLine("\nSubtraction of numbers:");
         double result = Subtract(20.5, 2.3, 3.4, 4.5);
         Console.WriteLine($"Result: {result}");
+        Console.ReadLine();
     }
 
     static double Add(params double[] numbers)
