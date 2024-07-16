@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class ex3
 {
     static void Main(string[] args)
     {
@@ -28,6 +28,7 @@ class Program
                 Console.WriteLine("Invalid input. Please enter a valid number.");
                 continue;
             }
+            Console.ReadLine();
 
             double result = 0;
             bool validChoice = true;

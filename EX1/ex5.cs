@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class ex5
 {
     static void Main(string[] args)
     {
@@ -22,6 +22,7 @@ class Program
 
         Console.WriteLine($"The sum of {num1} and {num2} is: {sum}");
         Console.WriteLine($"The difference between {num1} and {num2} is: {difference}");
+        Console.ReadLine();
     }
 
     static void CalculateSumAndDifference(int a, int b, out int sum, out int difference)

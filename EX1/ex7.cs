@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class ex7
 {
     static void Main(string[] args)
     {
@@ -44,5 +44,6 @@ class Program
         {
             Console.WriteLine($"{searchRegNo} is not present in the array.");
         }
+        Console.ReadLine();
     }
 }

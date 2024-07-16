@@ -1,6 +1,6 @@
 using System;
 
-class Program
+class ex2
 {
     static void Main(string[] args)
     {
@@ -22,6 +22,7 @@ class Program
         {
             Console.WriteLine("Invalid input. Please enter a valid number.");
         }
+        Console.ReadLine();
     }
 
     static void PrintPrimeNumbers(int start, int end)
