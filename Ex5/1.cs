@@ -123,6 +123,8 @@ class Program
 
             Console.Write("Enter Password: ");
             string password = Console.ReadLine();
+            // Handle the password first to trigger InvalidPasswordException if necessary
+            Account tempAccount = new Account(accountNumber, password, 0);
 
             Console.Write("Enter Initial Balance: ");
             if (!decimal.TryParse(Console.ReadLine(), out decimal initialBalance))
@@ -131,9 +133,18 @@ class Program
                 return;
             }
 
-            Account newAccount = new Account(accountNumber, "Pass123", initialBalance);
+            // Now that the initial balance is entered, create the full account
+            Account newAccount = new Account(accountNumber, password, initialBalance);
             accounts.Add(newAccount);
             Console.WriteLine("Account created successfully.");
+        }
+        catch (InvalidPasswordException e)
+        {
+            Console.WriteLine($"Password Error: {e.Message}");
+        }
+        catch (InsufficientInitialBalanceException e)
+        {
+            Console.WriteLine($"Balance Error: {e.Message}");
         }
         catch (Exception e)
         {
@@ -149,9 +160,21 @@ class Program
             string senderAccountNumber = Console.ReadLine();
             Account sender = FindAccount(senderAccountNumber);
 
+            if (sender == null)
+            {
+                Console.WriteLine("Sender account not found.");
+                return;
+            }
+
             Console.Write("Enter Recipient's Account Number: ");
             string recipientAccountNumber = Console.ReadLine();
             Account recipient = FindAccount(recipientAccountNumber);
+
+            if (recipient == null)
+            {
+                Console.WriteLine("Recipient account not found.");
+                return;
+            }
 
             Console.Write("Enter Transfer Amount: ");
             if (!decimal.TryParse(Console.ReadLine(), out decimal amount))
@@ -163,6 +186,14 @@ class Program
             sender.Transfer(amount, recipient);
             Console.WriteLine("Transfer successful.");
         }
+        catch (ExcessiveTransferException e)
+        {
+            Console.WriteLine($"Transfer Error: {e.Message}");
+        }
+        catch (InvalidOperationException e)
+        {
+            Console.WriteLine($"Transfer Error: {e.Message}");
+        }
         catch (Exception e)
         {
             Console.WriteLine($"Error: {e.Message}");
@@ -171,18 +202,25 @@ class Program
 
     static void ViewAccountDetails()
     {
-        Console.Write("Enter Account Number: ");
-        string accountNumber = Console.ReadLine();
-        Account account = FindAccount(accountNumber);
+        try
+        {
+            Console.Write("Enter Account Number: ");
+            string accountNumber = Console.ReadLine();
+            Account account = FindAccount(accountNumber);
 
-        if (account != null)
-        {
-            Console.WriteLine($"Account Number: {account.AccountNumber}");
-            Console.WriteLine($"Balance: {account.Balance:C}");
+            if (account != null)
+            {
+                Console.WriteLine($"Account Number: {account.AccountNumber}");
+                Console.WriteLine($"Balance: {account.Balance:C}");
+            }
+            else
+            {
+                Console.WriteLine("Account not found.");
+            }
         }
-        else
+        catch (Exception e)
         {
-            Console.WriteLine("Account not found.");
+            Console.WriteLine($"Error: {e.Message}");
         }
     }
 

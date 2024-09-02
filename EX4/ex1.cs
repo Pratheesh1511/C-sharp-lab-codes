@@ -107,12 +107,9 @@ class MatrixTest
 
     static void Main(string[] args)
     {
-        Matrix m1 = new Matrix(2, 2, new int[,] { { 1, 2 }, { 3, 4 } });
-        Matrix m2 = new Matrix(2, 2, new int[,] { { 5, 6 }, { 7, 8 } });
-
-        while (true)
-        {
-            Console.WriteLine("\nMatrix Operations Menu:");
+        Matrix m1 = new Matrix(2, 2, new int[,] { { 11, 12 }, { 13, 14 } });
+        Matrix m2 = new Matrix(2, 2, new int[,] { { 15, 16 }, { 17, 18 } });
+                    Console.WriteLine("\nMatrix Operations Menu:");
             Console.WriteLine("1. Add two matrices using single delegate");
             Console.WriteLine("2. Subtract two matrices using single delegate");
             Console.WriteLine("3. Array of Delegates");
@@ -120,6 +117,9 @@ class MatrixTest
             Console.WriteLine("5. Event handling for display function");
             Console.WriteLine("6. Lambda Expression to Add 5 to a Matrix");
             Console.WriteLine("7. Exit");
+        while (true)
+        {
+
             Console.Write("Enter your choice: ");
 
             if (!int.TryParse(Console.ReadLine(), out int choice))
